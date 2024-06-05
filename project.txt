@@ -1,0 +1,14 @@
+Auth details
+
+1. Routes:
+
+    * POST /api/users - Register a new users
+    * POST /api/users/auth - Authenticate user & getting the JWT
+    * POST /api/users/logout - Clear cookie
+    * GET /api/users/profile - Get user profile which is stored
+    * PUT /api/users/profile - Update Profile
+
+
+* New Folder as routes to maintain the code in systematic way
+
+* UserController will be linked to the userRoutes with all the functions
