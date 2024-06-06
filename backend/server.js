@@ -1,12 +1,13 @@
 import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
-const port = process.env.PORT || 4000;
 import userRoutes from './routes/userRoutes.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import connectDB from './config/db.js';
 import cookiesParser from 'cookie-parser';
 import cors from 'cors';
+
+const port = process.env.PORT || 4000;
 
 connectDB(); // Connect to the MongoDB database
 
@@ -24,11 +25,21 @@ app.use(cors());
 // Routes
 app.use('/api/users', userRoutes);
 
-// Default route
-app.get('/', (req, res) => {
-    res.send('Server Ready!')
-})
-
+// Serve static assets in production
+if (process.env.NODE_ENV === 'production') {
+    const __dirname = path.resolve();
+    app.use(express.static(path.join(__dirname, '/frontend/dist')));
+  
+    app.get('*', (req, res) =>
+      res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html'))
+    );
+  } else {
+    app.get('/', (req, res) => {
+      res.send('API is running....');
+    });
+  }
+  
+  
 
 // Middleware - Custom error handler
 app.use(notFound); // Middleware for 404 errors

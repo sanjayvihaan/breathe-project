@@ -1,0 +1,29 @@
+:where(.css-dev-only-do-not-override-3rel02).ant-layout .ant-layout-sider-children , :where(.css-dev-only-do-not-override-3rel02).ant-layout .ant-layout-sider-trigger{
+    background-color: #181818 !important;
+}
+
+:where(.css-dev-only-do-not-override-3rel02).ant-menu-dark .ant-menu-item-selected, :where(.css-dev-only-do-not-override-3rel02).ant-menu-dark>.ant-menu .ant-menu-item-selected {
+    background-color: #2E9844;
+}
+
+.Logout {
+    background-color: #2E9844;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+
+
+.ant-menu-item:nth-child(9) {
+    background-color: transparent;
+    color: red;
+}
+
+.ant-menu-item:nth-child(9):hover{
+    background-color: rgb(255, 95, 95);
+    color: #fff;
+}

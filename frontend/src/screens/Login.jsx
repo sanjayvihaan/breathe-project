@@ -6,9 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLoginMutation } from '../slices/usersApiSlice.js';
 import { setCredentials } from '../slices/authSlice.js';
 import { toast } from 'react-toastify';
-
-
-
+import Cookies from 'js-cookie';
+import Spinner from '../components/Loader.jsx';
 
 
 const Login = () => {
@@ -24,24 +23,39 @@ const Login = () => {
 
   const [login, { isLoading }] = useLoginMutation();
 
-  const { user } = useSelector((state) => state.auth);
+  const { userInfo } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    if (user) {
-      navigate('/');
+    const token = Cookies.get('jwt');
+    if (!token) {
+      navigate('/login'); // Redirect to login if no token found
     }
-  }, [navigate, user])
+  }, [navigate]);
+
+
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    try {
-      const res = await login({ email, password}).unwrap();
-      dispatch(setCredentials({ ...res }));
-    } catch (err) {
-      console.log(err.data.message || err.error.message);
-      toast.error(err.data.message || err.error.message, {
+    console.log("The email is: ", email)
+    console.log("The password is: ", password)
+    
+    if(email && password == '') {
+      toast.error("Email and Password are required", {
         position: "bottom-left"
       });
+      return;
+    } else {
+      try {
+        const res = await login({ email, password}).unwrap();
+        dispatch(setCredentials({ ...res }));
+        Cookies.set('jwt', res.token); // save token to local storage
+        navigate('/');
+      } catch (err) {
+        console.log(err.data.message || err.error.message);
+        toast.error(err.data.message || err.error.message, {
+          position: "bottom-left"
+        });
+      }
     }
   }
 
@@ -83,7 +97,9 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <button type="submit" className="w-full mt-4 bg-[#2E9844] text-white p-2 rounded-lg mb-6 hover:bg-[#21453c] hover:text-[#fff] hover:border hover:border-gray-300">Sign in</button>
+          <button type="submit" disabled={isLoading} className="w-full mt-4 bg-[#2E9844] text-white p-2 rounded-lg mb-6 hover:bg-[#21453c] hover:text-[#fff] hover:border hover:border-gray-300">Sign in</button>
+          
+          { isLoading && <Spinner /> }
 
           </form>
          
@@ -93,6 +109,7 @@ const Login = () => {
               <Link to="/signup"> Sign Up</Link>
             </span>
           </div>
+
 
           
         </div>

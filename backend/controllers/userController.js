@@ -1,6 +1,6 @@
 import asyncHandler from 'express-async-handler';
-import generateToken from '../utils/generateToken.js';
 import User from '../models/userModel.js';
+import generateToken from '../utils/generateToken.js';
 
 
 // @desc    Auth user & get token
@@ -25,11 +25,6 @@ const authUser = asyncHandler (async (req, res) => {
         res.status(401); // If the user does not exist or the password does not match, return a 401 status code
         throw new Error('Invalid email or password');
     }
-
-
-
-
-
     res.status(200).json({
         message: 'Auth User'
     })
