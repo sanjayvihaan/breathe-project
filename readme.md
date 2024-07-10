@@ -4,10 +4,10 @@
 
 # Below are the screens:
     1. Sign Up Page:
-    ![Sign Up Page] (https://raw.githubusercontent.com/sanjayvihaan/breathe-project/main/Screenshot/signup.png)
+    <img src="https://raw.githubusercontent.com/sanjayvihaan/breathe-project/main/Screenshot/signup.png" alt="Sign Up Page">
 
     2. Login Page:
-    ![Login Page] (https://raw.githubusercontent.com/sanjayvihaan/breathe-project/main/Screenshot/login.png)
+    <img src="https://raw.githubusercontent.com/sanjayvihaan/breathe-project/main/Screenshot/login.png" alt="Login Page">
 
     3. Home Page/Dashboard Page:
-    ![Dashboard](https://raw.githubusercontent.com/sanjayvihaan/breathe-project/main/Screenshot/home.png)
+    <img src="https://raw.githubusercontent.com/sanjayvihaan/breathe-project/main/Screenshot/home.png" alt="Login Page">
