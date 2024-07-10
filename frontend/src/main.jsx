@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import Login from './screens/Login.jsx';
 import Signup from './screens/SignUp.jsx';
+import EntityManager from './screens/EntityManager.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -16,6 +17,7 @@ const router = createBrowserRouter(
       <Route index={true} element={<HomeScreen />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/entity-manager" element={<EntityManager />} />
     </Route>
   )
 );

@@ -9,11 +9,12 @@ const collapsedLogo = 'https://assets-global.website-files.com/64d0758245286f4d6
 const Sidebar = ({ collapsed, onCollapse }) => (
     <Sider collapsible collapsed={collapsed} onCollapse={onCollapse} className='bg-[#181818] w-[250px]'>
       <div className="logo" style={{ padding: '16px', textAlign: 'center', marginBottom: '20px' }}>
-        <img
+        {/* <img
           src={collapsed ? collapsedLogo : expandedLogo} // Conditionally render the logo
           alt="Logo"
           style={collapsed ? { width: '30px', height: 'auto' } : { width: '150px', height: 'auto' }} // Conditionally apply styles
-          />
+          /> */}
+          <h3 className='text-white text-left text-2xl'>Welcome User</h3>
       </div>
       <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} className='bg-[#181818]'/>
     </Sider>

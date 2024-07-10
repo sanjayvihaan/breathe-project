@@ -65,7 +65,8 @@ const Login = () => {
         className="relative flex flex-col space-y-6  md:flex-row md:space-y-0 w-full h-screen"
       >
         <div className="flex flex-col justify-center p-8 w-2/4 max-md:w-full">
-          <img src={logo} alt="logo" width={250} />
+          {/*<img src={logo} alt="logo" width={250} /> */}
+          <h2 className='text-4xl'>Login to your Account</h2>
           <br />
           <span className="font-light text-gray-400 text-sm mb-2">
             We help you track your organisations <br /> metrics as per the ESG Guidelines
